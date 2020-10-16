@@ -1,9 +1,12 @@
 import L from 'leaflet';
+import regionalExpressions from './RegionalExpression/RegionalExpression';
 
 fetch('./data/Regioes_Brasil.geojson')
 	.then((file) => file.json())
 	.then((brazil_regions) => {
 		console.log('brazil_regions', brazil_regions);
+		const regionalExpressionsData = regionalExpressions;
+		
 		const bounds = [
 			[-40, -80],
 			[13, -20],
