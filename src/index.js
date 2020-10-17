@@ -6,8 +6,6 @@ fetch('./data/Regioes_Brasil.geojson')
 	.then((file) => file.json())
 	.then((brazil_regions) => {
 		console.log('brazil_regions', brazil_regions);
-		const regionalExpressionsData = regionalExpressions;
-		
 		const bounds = [
 			[-40, -80],
 			[13, -20],
@@ -20,6 +18,15 @@ fetch('./data/Regioes_Brasil.geojson')
 			zoomControl: false,
 			maxBounds: bounds,
 		});
-
 		const brazil_regions_layer = L.geoJSON(brazil_regions, { color: '#fff' }).addTo(map);
+
+		const play = document.getElementById('play');
+		play.addEventListener('click', () => startGame());
+
+		const regionalExpressionsData = regionalExpressions;
+		const menu = document.getElementById('menu');
+
+		function startGame(){
+			menu.classList.add('hide');
+		};
 	});
