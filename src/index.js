@@ -23,10 +23,22 @@ fetch('./data/Regioes_Brasil.geojson')
 		const play = document.getElementById('play');
 		play.addEventListener('click', () => startGame());
 
-		const regionalExpressionsData = regionalExpressions;
 		const menu = document.getElementById('menu');
-
 		function startGame(){
 			menu.classList.add('hide');
+			getRandomExpression();
 		};
+
+		let regionalExpressionsData = regionalExpressions;
+		let regionalExpression = null;
+		function getRandomExpression(){
+			if(regionalExpressionsData.length){
+				const index = Math.floor(Math.random() * (regionalExpressionsData.length - 1) + 0);
+				regionalExpression = regionalExpressionsData[index];
+				regionalExpressionsData.splice(index,1);
+			} else{
+				// TO DO
+				// endGame();
+			}
+		}
 	});
