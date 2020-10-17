@@ -1,4 +1,5 @@
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import regionalExpressions from './RegionalExpression/RegionalExpression';
 
 fetch('./data/Regioes_Brasil.geojson')
