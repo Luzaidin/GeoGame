@@ -69,3 +69,23 @@
   opacity: 0 !important;
   visibility: hidden !important;
 }
+
+#information {
+  z-index: 401;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  height: 200px;
+  width: 250px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.informationText {
+  font-size: 22px;
+  font-weight: bold;
+}
