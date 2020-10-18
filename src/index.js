@@ -31,14 +31,28 @@ fetch('./data/Regioes_Brasil.geojson')
 
 		let regionalExpressionsData = regionalExpressions;
 		let regionalExpression = null;
+		const pointsToWin = regionalExpressionsData.length;
 		function getRandomExpression(){
 			if(regionalExpressionsData.length){
 				const index = Math.floor(Math.random() * (regionalExpressionsData.length - 1) + 0);
 				regionalExpression = regionalExpressionsData[index];
 				regionalExpressionsData.splice(index,1);
+				updateGameInformations();
 			} else{
 				// TO DO
 				// endGame();
+			}
+		};
+
+		const expression = document.getElementById('expression');
+		const meaning = document.getElementById('meaning');
+		const pointsLabel = document.getElementById('points');
+		let points = 0;
+		function updateGameInformations(){
+			if(regionalExpression){
+				expression.innerHTML = regionalExpression.expression;
+				meaning.innerHTML = regionalExpression.meaning;
+				pointsLabel.innerHTML = `${points}/${pointsToWin}`;
 			}
 		}
 	});
