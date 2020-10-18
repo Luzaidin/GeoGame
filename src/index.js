@@ -53,6 +53,15 @@ fetch('./data/Regioes_Brasil.geojson')
 				expression.innerHTML = regionalExpression.expression;
 				meaning.innerHTML = regionalExpression.meaning;
 				pointsLabel.innerHTML = `${points}/${pointsToWin}`;
+				enableFeatureClick();
 			}
-		}
+		};
+
+		function enableFeatureClick(){
+			brazil_regions_layer.on('click', (event) => validateAnswer(event));
+		};
+
+		function validateAnswer(event){
+			console.log('event', event);
+		};
 	});
