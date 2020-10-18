@@ -5,7 +5,6 @@ import regionalExpressions from './RegionalExpression/RegionalExpression';
 fetch('./data/Regioes_Brasil.geojson')
 	.then((file) => file.json())
 	.then((brazil_regions) => {
-		console.log('brazil_regions', brazil_regions);
 		const bounds = [
 			[-40, -80],
 			[13, -20],
@@ -38,9 +37,7 @@ fetch('./data/Regioes_Brasil.geojson')
 				regionalExpression = regionalExpressionsData[index];
 				regionalExpressionsData.splice(index,1);
 				updateGameInformations();
-			} else{
-				endGame();
-			}
+			} else endGame();
 		};
 
 		const expression = document.getElementById('expression');
@@ -53,9 +50,7 @@ fetch('./data/Regioes_Brasil.geojson')
 				expression.innerHTML = regionalExpression.expression;
 				meaning.innerHTML = regionalExpression.meaning;
 				pointsLabel.innerHTML = `${points}/${pointsToWin}`;
-				if(enbaleClickFeature){
-					enableFeatureClick();
-				}
+				if(enbaleClickFeature) enableFeatureClick();
 			}
 		};
 
@@ -69,12 +64,11 @@ fetch('./data/Regioes_Brasil.geojson')
 			if(region === regionalExpression.region){
 				points += 1;
 				getRandomExpression();
-			} else{
-				endGame();
-			}
+			} else endGame();
 		};
 
 		function endGame(){
+			updateGameMenu();
 			resetVariables();
 			disableFeatureClick();
 			resetGameInformations();
@@ -94,4 +88,13 @@ fetch('./data/Regioes_Brasil.geojson')
 			meaning.innerHTML = '';
 			pointsLabel.innerHTML = '';
 		};
+
+		function updateGameMenu(){
+			const title = document.getElementById('title');
+			title.innerHTML = 'Fim de Jogo';
+			const content = document.getElementById('content');
+			if(points == pointsToWin) content.innerHTML = `Parabéns! Você acertou ${points}/${pointsToWin}.`;
+			else content.innerHTML = `Você acertou ${points}/${pointsToWin}.`;
+			menu.classList.remove('hide');
+		}
 	});
