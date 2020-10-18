@@ -60,7 +60,7 @@ fetch('./data/Regioes_Brasil.geojson')
 		};
 
 		function enableFeatureClick(){
-			brazil_regions_layer.on('click', (event) => validateAnswer(event));
+			brazil_regions_layer.addEventListener('click', (event) => validateAnswer(event));
 			enbaleClickFeature = false;
 		};
 
@@ -76,10 +76,15 @@ fetch('./data/Regioes_Brasil.geojson')
 
 		function endGame(){
 			resetVariables();
+			disableFeatureClick();
 		};
 
 		function resetVariables(){
 			regionalExpressionsData = regionalExpressions;
 			points = 0;
+		};
+
+		function disableFeatureClick(){
+			brazil_regions_layer.clearAllEventListeners();
 		};
 	});
