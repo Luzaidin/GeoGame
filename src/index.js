@@ -62,6 +62,7 @@ fetch('./data/Regioes_Brasil.geojson')
 		function validateAnswer(event){
 			const region = event.layer.feature.properties.nome;
 			if(region === regionalExpression.region){
+				highlightRegion(event);
 				points += 1;
 				getRandomExpression();
 			} else endGame();
@@ -97,5 +98,11 @@ fetch('./data/Regioes_Brasil.geojson')
 			if(points == pointsToWin) content.innerHTML = `Parabéns! Você acertou ${points}/${pointsToWin}.`;
 			else content.innerHTML = `Você acertou ${points}/${pointsToWin}.`;
 			menu.classList.remove('hide');
-		}
+		};
+
+		// Extra
+		function highlightRegion(feature){
+			const highlightedRegion = L.geoJSON(feature.layer.feature, { color: 'rgb(130, 255, 130)' }).addTo(map);
+			setTimeout(() => map.removeLayer(highlightedRegion), 250);
+		};
 	});
