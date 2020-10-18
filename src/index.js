@@ -48,20 +48,32 @@ fetch('./data/Regioes_Brasil.geojson')
 		const meaning = document.getElementById('meaning');
 		const pointsLabel = document.getElementById('points');
 		let points = 0;
+		let enbaleClickFeature = true
 		function updateGameInformations(){
 			if(regionalExpression){
 				expression.innerHTML = regionalExpression.expression;
 				meaning.innerHTML = regionalExpression.meaning;
 				pointsLabel.innerHTML = `${points}/${pointsToWin}`;
-				enableFeatureClick();
+				if(enbaleClickFeature){
+					enableFeatureClick();
+				}
 			}
 		};
 
 		function enableFeatureClick(){
 			brazil_regions_layer.on('click', (event) => validateAnswer(event));
+			enbaleClickFeature = false;
 		};
 
 		function validateAnswer(event){
-			console.log('event', event);
+			const region = event.layer.feature.properties.nome;
+			if(region === regionalExpression.region){
+				points += 1;
+				getRandomExpression();
+			} else{
+				// TO DO
+				// endGame();
+			}
+		
 		};
 	});
