@@ -81,6 +81,7 @@ fetch('./data/Regioes_Brasil.geojson')
 
 		function disableFeatureClick(){
 			brazil_regions_layer.clearAllEventListeners();
+			enbaleClickFeature = true;
 		};
 
 		function resetGameInformations(){
