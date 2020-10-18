@@ -77,6 +77,7 @@ fetch('./data/Regioes_Brasil.geojson')
 		function endGame(){
 			resetVariables();
 			disableFeatureClick();
+			resetGameInformations();
 		};
 
 		function resetVariables(){
@@ -86,5 +87,11 @@ fetch('./data/Regioes_Brasil.geojson')
 
 		function disableFeatureClick(){
 			brazil_regions_layer.clearAllEventListeners();
+		};
+
+		function resetGameInformations(){
+			expression.innerHTML = '';
+			meaning.innerHTML = '';
+			pointsLabel.innerHTML = '';
 		};
 	});
