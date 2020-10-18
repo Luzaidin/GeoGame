@@ -39,8 +39,7 @@ fetch('./data/Regioes_Brasil.geojson')
 				regionalExpressionsData.splice(index,1);
 				updateGameInformations();
 			} else{
-				// TO DO
-				// endGame();
+				endGame();
 			}
 		};
 
@@ -71,9 +70,16 @@ fetch('./data/Regioes_Brasil.geojson')
 				points += 1;
 				getRandomExpression();
 			} else{
-				// TO DO
-				// endGame();
+				endGame();
 			}
-		
+		};
+
+		function endGame(){
+			resetVariables();
+		};
+
+		function resetVariables(){
+			regionalExpressionsData = regionalExpressions;
+			points = 0;
 		};
 	});
