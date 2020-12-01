@@ -49,7 +49,7 @@ $ npm run dev
 
 ## Built With
 
-- [LeafLet](https://leafletjs.com/https://leafletjs.com/) - JavaScript library for interactive maps
+- [LeafLet](https://leafletjs.com/) - JavaScript library for interactive maps
 - [Babel](https://babeljs.io/) - JavaScript Compiler
 - [Webpack](https://webpack.js.org/) - Module bundler
 
